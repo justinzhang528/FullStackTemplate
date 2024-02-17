@@ -1,0 +1,29 @@
+import {createRouter, createWebHashHistory} from 'vue-router';
+
+const router = createRouter({
+    history: createWebHashHistory(),
+    routes: [
+        {
+            path: '/',
+            component: () => import('../views/Login.vue')
+        },
+        {
+            path: '/register',
+            component: () => import('../views/Register.vue')
+        },
+        {
+            path: '/person',
+            component: () => import('../views/Person.vue')
+        },
+        {
+            path: '/table',
+            component: () => import('../views/Table.vue')
+        },
+        {
+            path: '/login',
+            redirect: '/'
+        }
+    ]
+})
+
+export default router;
