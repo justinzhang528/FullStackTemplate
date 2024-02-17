@@ -80,7 +80,7 @@
                 .then((response) => {
                     if(response.data.errorCode === 0){
                         alert('Success','Login Success','success')
-                        router.push('/person')
+                        router.push('/customerList')
                     }else{
                         alert('Warning',response.data.errorMessage,'warning')
                     }

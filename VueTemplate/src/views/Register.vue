@@ -1,5 +1,5 @@
 <template>
-    <div class="login">
+    <div class="register">
         <div class="box">
             <h2>Register New User</h2>
             <el-form ref="formRef" :model="validateForm" :rules="inputRules" label-width="140px" class="demo-ruleForm">
@@ -148,7 +148,7 @@
 </script>
 
 <style scoped lang="scss">
-.login{
+.register{
     width: 100vw;
     height: 100vh;
     background: white;
