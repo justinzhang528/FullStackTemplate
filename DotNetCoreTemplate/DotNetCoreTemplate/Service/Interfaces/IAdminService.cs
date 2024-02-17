@@ -7,4 +7,5 @@ public interface IAdminService
 {
     public BaseApiResponse? Login(LoginRequest req);
     public BaseApiResponse? Register(RegisterRequest req);
+    public GetAllCustomerResponse? GetAllCustomer();
 }

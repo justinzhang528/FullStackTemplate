@@ -78,7 +78,7 @@
             if (valid) {
                 $post('/Admin/Login', validateForm)
                 .then((response) => {
-                    if(response.data.errorCode === '0'){
+                    if(response.data.errorCode === 0){
                         alert('Success','Login Success','success')
                         router.push('/person')
                     }else{

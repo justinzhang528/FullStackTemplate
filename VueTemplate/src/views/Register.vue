@@ -126,7 +126,7 @@
             if (valid) {
                 $post('/Admin/Register', validateForm)
                 .then((response) => {
-                    if(response.data.errorCode === '0'){
+                    if(response.data.errorCode === 0){
                         alert('Success','Register Success','success')
                         router.push('/login')
                     }else{

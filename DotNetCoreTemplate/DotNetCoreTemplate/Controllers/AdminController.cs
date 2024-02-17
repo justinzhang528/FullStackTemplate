@@ -29,4 +29,11 @@ public class AdminController : Controller
     {
         return _adminService.Register(req);
     }
+    
+    [HttpPost]
+    [Route("GetAllCustomer")]
+    public GetAllCustomerResponse? GetAllCustomer()
+    {
+        return _adminService.GetAllCustomer();
+    }
 }

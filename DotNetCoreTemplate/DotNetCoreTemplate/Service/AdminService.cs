@@ -23,4 +23,15 @@ public class AdminService : IAdminService
     {
         return _adminRepository.Register(req);
     }
+
+    public GetAllCustomerResponse? GetAllCustomer()
+    {
+        var result =  _adminRepository.GetAllCustomer();
+        return new GetAllCustomerResponse()
+        {
+            Customers = result,
+            ErrorCode = 0,
+            ErrorMessage = "Success"
+        };
+    }
 }

@@ -1,5 +1,6 @@
 using DotNetCore.Models.Requests;
 using DotNetCore.Models.Responses;
+using DotNetCore.Repositories.Dto;
 using DotNetCore.Repositories.Interfaces;
 using DotNetCore.Service.Interfaces;
 
@@ -19,5 +20,10 @@ public class AdminRepository : BaseRepository, IAdminRepository
     public BaseApiResponse? Register(RegisterRequest req)
     {
         return Query<BaseApiResponse>("[dbo].[Register_1.0.0]", req).ToList().FirstOrDefault();
+    }
+
+    public List<Customer> GetAllCustomer()
+    {
+        return Query<Customer>("[dbo].[GetAllCustomer_1.0.0]").ToList();
     }
 }
