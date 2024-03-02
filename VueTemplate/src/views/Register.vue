@@ -35,7 +35,7 @@
     </div>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts" setup name="Register">
     import { reactive, ref } from 'vue'
     import type { FormInstance } from 'element-plus'
     import { ElNotification } from 'element-plus'

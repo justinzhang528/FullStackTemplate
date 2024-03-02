@@ -20,51 +20,17 @@
 
 </template>
 
-<script lang="ts" setup>
+<script lang="ts" setup name="Person">
     // ref => 創建一個響應式數據或對象，必須使用.value訪問
     // reactive => 創建一個響應式對象，可以直接訪問
     // toRefs => 轉換成響應式數據
-    import { ref, reactive, toRefs, toRef, computed, watch } from 'vue'
-    import { $get, $post } from '../utils/request'
+    import { toRefs, toRef, computed, watch } from 'vue'
+    import { $post } from '../utils/request'
+    import usePerson from '@/hooks/usePerson'
+    import useGame from '@/hooks/useGame'
 
-    // 數據
-    let name = ref('John Doe')
-    let age = ref(25)
-    let tel = ref('123-456-7890')
-
-    let person = reactive({
-        name: 'John Doe',
-        age: 25,
-        tel: '123-456-7890'
-    })
-
-    let games = reactive([
-        {id: 1, gameName: 'GTA V', price: 50},
-        {id: 2, gameName: 'FIFA 22', price: 60},
-        {id: 3, gameName: 'NFS', price: 40}
-    ])
-
-    // 計算屬性，只讀
-    let gameTotalPrice = computed(()=> {
-        return games.reduce((acc, game)=> acc + game.price, 0)
-    })
-
-    // 計算屬性，可讀可寫
-    let Info = computed({
-        get(){
-            return `Name: ${name.value}, Age: ${age.value}, Tel: ${tel.value}`
-        },
-        set(val){
-            let arr = val.split(',')
-            name.value = arr[0]
-            age.value = +arr[1]
-            tel.value = arr[2]
-        }
-    })
-
-    // 轉換成響應式數據，再進行assign
-    let {id, gameName, price} = toRefs(games[0])
-    let gameName2 = toRef(games[0], 'gameName')
+    const { name, age, tel, person, personInfo } = usePerson()
+    const { games, gameTotalPrice } = useGame()
 
     // 監聽
     watch(person, (newVal, oldVal)=> {

@@ -20,17 +20,12 @@
     </div>
 </template>
   
-<script lang="ts" setup>
-    import { $get } from '@/utils/request';
+<script lang="ts" setup name="CustomerList">
     import { computed, ref, reactive, onMounted } from 'vue'
-  
-    interface Customer {
-        customerId: number
-        email: string
-        phone: string
-        address: string
-    }
+    import useCustomer from '@/hooks/useCustomer'
+    import type { Customer } from '@/interface/Customer'
 
+    const { tableData, getAllCustomer } = useCustomer()
     const search = ref('')
     const filterTableData = computed(() =>
         tableData.filter(
@@ -48,14 +43,9 @@
         tableData.splice(index, 1)
     }
 
-    const tableData: Customer[] = reactive([])
-
     // run on page load
     onMounted(()=>{
-        $get('/Admin/GetAllCustomer',null).then((res)=>{
-            tableData.push(...res.data.customers)
-            console.log(tableData)
-        })
+        getAllCustomer()
     })
 </script>
   
